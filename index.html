@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Suryoday Education - Education for Bright Future. Expert coaching for Std 1-10 all subjects and Std 11-12 Commerce in Surat, Gujarat." />
+  <meta name="keywords" content="tuition classes surat, coaching institute surat, commerce classes, Suryoday Education, Mota Varachha tuition" />
+  <title>Suryoday Education | Education For Bright Future</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-dark: #9A7A2E;
+      --gold-glow: rgba(201,168,76,0.35);
+      --bg-deep: #080808;
+      --bg-dark: #0D0D0D;
+      --bg-card: rgba(255,255,255,0.04);
+      --bg-card-hover: rgba(255,255,255,0.08);
+      --text-primary: #F5F0E8;
+      --text-muted: #8A8070;
+      --glass: rgba(201,168,76,0.07);
+      --glass-border: rgba(201,168,76,0.2);
+      --radius: 16px;
+      --transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ── LOADER ── */
+    #loader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--bg-deep);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 24px;
+    }
+    .loader-logo {
+      width: 80px; height: 80px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      animation: pulse-ring 1.5s ease-in-out infinite;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 900;
+      color: var(--gold);
+    }
+    .loader-bar {
+      width: 200px; height: 2px;
+      background: rgba(201,168,76,0.2);
+      border-radius: 99px; overflow: hidden;
+    }
+    .loader-fill {
+      height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+      border-radius: 99px;
+      animation: load-fill 2s ease forwards;
+    }
+    .loader-text {
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); opacity: 0.7;
+    }
+    @keyframes pulse-ring {
+      0%,100% { box-shadow: 0 0 0 0 var(--gold-glow); }
+      50% { box-shadow: 0 0 0 20px transparent; }
+    }
+    @keyframes load-fill { from { width: 0; } to { width: 100%; } }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 20px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 14px 5%;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 900;
+      color: #080808;
+    }
+    .nav-logo-text { line-height: 1.1; }
+    .nav-logo-text span:first-child {
+      display: block; font-family: 'Playfair Display', serif;
+      font-size: 16px; font-weight: 700; color: var(--gold-light);
+    }
+    .nav-logo-text span:last-child {
+      display: block; font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; font-size: 13px; font-weight: 500;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 100%;
+      height: 1px; background: var(--gold);
+      transition: right 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { right: 0; }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #080808 !important; padding: 10px 22px;
+      border-radius: 8px; font-weight: 600 !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { opacity: 0.85; color: #080808 !important; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--gold); border-radius: 99px;
+      transition: var(--transition);
+    }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(8,8,8,0.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 40px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; color: var(--text-primary);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute; top: 24px; right: 24px;
+      background: none; border: none; color: var(--gold);
+      font-size: 28px; cursor: pointer;
+    }
+
+    /* ── SECTIONS ── */
+    section { display: none; }
+    section.active { display: block; }
+    #home { display: block; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 120px 5% 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-bg-grad {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,168,76,0.12) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.06) 0%, transparent 60%);
+    }
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .orb1 { width: 500px; height: 500px; background: rgba(201,168,76,0.08); top: -100px; right: -100px; }
+    .orb2 { width: 300px; height: 300px; background: rgba(154,122,46,0.1); bottom: 0; left: 10%; }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 99px; padding: 8px 18px; margin-bottom: 32px;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 900; line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .hero h1 .line { display: block; overflow: hidden; }
+    .hero h1 .gold { color: var(--gold-light); }
+    .hero-sub {
+      font-size: 17px; color: var(--text-muted);
+      line-height: 1.7; margin-bottom: 40px;
+      max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+      color: #080808; font-weight: 700; font-size: 14px;
+      padding: 15px 30px; border-radius: 10px; border: none;
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      letter-spacing: 0.5px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(201,168,76,0.4);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent;
+      color: var(--gold-light); font-weight: 600; font-size: 14px;
+      padding: 14px 30px; border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      cursor: pointer; text-decoration: none;
+      transition: var(--transition);
+    }
+    .btn-outline:hover {
+      background: var(--glass); border-color: var(--gold);
+    }
+    .hero-stats {
+      display: flex; gap: 48px; margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; font-weight: 900;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; letter-spacing: 0.5px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-tag {
+      display: inline-block; font-size: 10px; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+      line-height: 1.15;
+    }
+    .section-header p {
+      font-size: 16px; color: var(--text-muted);
+      margin-top: 16px; max-width: 540px; margin-left: auto; margin-right: auto;
+      line-height: 1.7;
+    }
+    .gold-line {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 20px auto 0;
+    }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+    .section-pad { padding: 100px 0; }
+
+    /* ── WHY CHOOSE US ── */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .why-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: var(--radius); padding: 36px 28px;
+      transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .why-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+    .why-card:hover { background: var(--bg-card-hover); border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+    .why-card:hover::before { transform: scaleX(1); }
+    .why-icon {
+      width: 52px; height: 52px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .why-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .why-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── COURSES ── */
+    .courses-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .course-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 20px; overflow: hidden;
+      transition: var(--transition);
+    }
+    .course-card:hover { transform: translateY(-6px); border-color: rgba(201,168,76,0.35); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+    .course-header {
+      padding: 36px 32px 28px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.03));
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      position: relative;
+    }
+    .course-badge {
+      position: absolute; top: 20px; right: 20px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #080808; font-size: 10px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 99px;
+    }
+    .course-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+    .course-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 700; margin-bottom: 6px;
+    }
+    .course-header p { font-size: 13px; color: var(--text-muted); }
+    .course-body { padding: 28px 32px; }
+    .course-subjects { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .subject-tag {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 6px; padding: 5px 12px;
+      font-size: 12px; color: var(--gold-light);
+    }
+    .course-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .course-features li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .course-features li::before {
+      content: '✓'; color: var(--gold);
+      font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ── RESULTS ── */
+    .results-bg {
+      background: linear-gradient(180deg, var(--bg-deep), #0A0800, var(--bg-deep));
+    }
+    .results-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px; margin-bottom: 60px;
+    }
+    .result-stat {
+      text-align: center;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: var(--radius); padding: 36px 20px;
+    }
+    .result-stat .big-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 54px; font-weight: 900;
+      color: var(--gold-light); line-height: 1;
+      display: block;
+    }
+    .result-stat p { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
+    .toppers-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .topper-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: var(--radius); padding: 24px;
+      text-align: center; transition: var(--transition);
+    }
+    .topper-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .topper-avatar {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; color: #080808;
+      margin: 0 auto 14px;
+    }
+    .topper-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+    .topper-std { font-size: 11px; color: var(--text-muted); margin-bottom: 12px; }
+    .topper-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 900; color: var(--gold);
+    }
+    .topper-score span { font-size: 13px; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,168,76,0.08);
+      border-radius: 20px; padding: 32px;
+      transition: var(--transition); position: relative;
+    }
+    .testimonial-card:hover { border-color: rgba(201,168,76,0.3); background: var(--bg-card-hover); }
+    .testimonial-quote {
+      font-size: 48px; line-height: 1;
+      color: var(--gold); opacity: 0.4;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 12px;
+    }
+    .testimonial-text {
+      font-size: 15px; line-height: 1.75;
+      color: var(--text-primary); margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: #080808; font-size: 16px;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 600; font-size: 14px; }
+    .author-stars { color: var(--gold); font-size: 12px; margin-top: 2px; }
+
+    /* INSTAGRAM REELS */
+    .reels-section {
+      padding: 0 5% 100px;
+    }
+    .reels-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(255,255,255,0.02));
+      border: 1px solid rgba(201,168,76,0.14);
+      border-radius: 28px;
+      padding: 56px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .reels-shell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(201,168,76,0.12), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(201,168,76,0.08), transparent 35%);
+      pointer-events: none;
+    }
+    .reels-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .reel-card {
+      background: rgba(8,8,8,0.72);
+      border: 1px solid rgba(201,168,76,0.14);
+      border-radius: 22px;
+      padding: 14px;
+      backdrop-filter: blur(8px);
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .reel-tile {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+    }
+    .reel-preview {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(201,168,76,0.22), rgba(8,8,8,0.95));
+      box-shadow: inset 0 0 0 1px rgba(201,168,76,0.12);
+    }
+    .reel-preview iframe {
+      position: absolute;
+      left: 50%;
+      top: -72px;
+      width: 100%;
+      height: calc(100% + 144px);
+      transform: translateX(-50%) scale(1.02);
+      border: 0;
+      pointer-events: none;
+    }
+    .reel-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.16) 45%, rgba(0,0,0,0.72));
+      pointer-events: none;
+    }
+    .reel-badge {
+      align-self: flex-start;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #080808;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-weight: 700;
+    }
+    .reel-play {
+      align-self: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(8,8,8,0.72);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      color: var(--text-primary);
+      font-size: 24px;
+    }
+    .reel-meta {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .reel-meta strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+    .reel-meta span {
+      font-size: 12px;
+      color: rgba(245,240,232,0.72);
+    }
+    .reel-arrow {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201,168,76,0.25);
+      color: var(--gold-light);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .reels-cta {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+    .reel-viewer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
+      z-index: 4000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .reel-viewer.open {
+      display: flex;
+    }
+    .reel-viewer-backdrop {
+      position: absolute;
+      inset: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .reel-viewer-shell {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 1100px);
+      display: grid;
+      grid-template-columns: auto minmax(280px, 420px) auto;
+      align-items: center;
+      gap: 18px;
+    }
+    .reel-nav,
+    .reel-close {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.28);
+      background: rgba(8,8,8,0.7);
+      color: var(--gold-light);
+      font-size: 22px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .reel-nav:hover,
+    .reel-close:hover {
+      background: rgba(201,168,76,0.12);
+      border-color: rgba(201,168,76,0.5);
+    }
+    .reel-frame-wrap {
+      position: relative;
+    }
+    .reel-frame {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(201,168,76,0.18);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+    }
+    .reel-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #000;
+    }
+    .reel-frame-top {
+      position: absolute;
+      top: -70px;
+      right: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .reel-viewer-controls {
+      display: none;
+    }
+    .reel-counter {
+      color: var(--text-muted);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .about-visual {
+      position: relative; padding: 20px;
+    }
+    .about-big-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px; padding: 48px 40px;
+      text-align: center; position: relative;
+    }
+    .about-logo-big {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 40px; font-weight: 900; color: #080808;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 60px rgba(201,168,76,0.3);
+    }
+    .about-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; margin-bottom: 6px;
+    }
+    .about-card-sub { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+    .about-floating-stat {
+      position: absolute; background: var(--bg-dark);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px; padding: 14px 18px;
+    }
+    .afs-1 { bottom: -10px; left: -20px; }
+    .afs-2 { top: 20px; right: -30px; }
+    .afs-num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: var(--gold); }
+    .afs-label { font-size: 11px; color: var(--text-muted); }
+    .about-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 44px); font-weight: 700;
+      line-height: 1.2; margin-bottom: 20px;
+    }
+    .about-content p {
+      font-size: 15px; color: var(--text-muted); line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .about-values { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    .about-value {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--glass);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 10px; padding: 14px 18px;
+    }
+    .value-icon { font-size: 20px; flex-shrink: 0; }
+    .value-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+    .value-desc { font-size: 12px; color: var(--text-muted); }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 48px; align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-info-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: var(--radius); padding: 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 4px; }
+    .contact-value { font-size: 14px; line-height: 1.6; color: var(--text-primary); }
+    .map-container {
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--glass-border);
+      margin-top: 20px; height: 220px;
+    }
+    .map-container iframe { width: 100%; height: 100%; border: none; }
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 20px; padding: 40px;
+    }
+    .form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 700; margin-bottom: 28px;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 10px; padding: 13px 16px;
+      color: var(--text-primary); font-family: 'DM Sans', sans-serif;
+      font-size: 14px; outline: none;
+      transition: border-color 0.3s;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group select option { background: #1a1a1a; color: var(--text-primary); }
+    .form-submit {
+      width: 100%; margin-top: 8px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
+      color: #080808; font-weight: 700; font-size: 15px;
+      padding: 16px; border-radius: 10px; border: none;
+      cursor: pointer; transition: var(--transition);
+      letter-spacing: 0.5px;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.3); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .success-msg {
+      display: none; text-align: center; padding: 24px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 12px; margin-top: 16px;
+      color: var(--gold);
+    }
+    .error-msg {
+      display: none; font-size: 11px; color: #ff6b6b; margin-top: 4px;
+    }
+
+    /* ── WHATSAPP ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+      text-decoration: none; font-size: 26px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: wa-bounce 3s ease-in-out infinite;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 12px 48px rgba(37,211,102,0.5); }
+    @keyframes wa-bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .wa-tooltip {
+      position: absolute; right: 70px; top: 50%; transform: translateY(-50%);
+      background: #080808; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 8px 14px;
+      font-size: 12px; white-space: nowrap; color: var(--text-primary);
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .wa-float:hover .wa-tooltip { opacity: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(201,168,76,0.1);
+      padding: 48px 5% 32px;
+      text-align: center;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 40px; flex-wrap: wrap; gap: 32px;
+    }
+    .footer-brand h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; color: var(--gold-light); margin-bottom: 6px;
+    }
+    .footer-brand p { font-size: 12px; color: var(--text-muted); }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+    .footer-links h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; font-size: 12px; color: var(--text-muted); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(40px); }
+    .fade-in { opacity: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 28px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .reels-shell { padding: 44px 18px; }
+      .reel-viewer-shell {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .reel-viewer-controls {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+      }
+      .reel-frame-top {
+        position: static;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+      .hero h1 { font-size: 38px; }
+      .footer-top { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links { align-items: center; }
+      .reels-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .reel-card { padding: 10px; }
+      .reel-badge { font-size: 10px; padding: 6px 9px; }
+      .reel-meta strong { font-size: 14px; }
+      .reel-meta span { font-size: 11px; }
+      .reel-play { width: 54px; height: 54px; font-size: 20px; }
+      .reel-viewer { padding: 14px; }
+      .reel-nav, .reel-close { width: 46px; height: 46px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">S</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-text">Suryoday Education</div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-icon">S</div>
+    <div class="nav-logo-text">
+      <span>Suryoday Education</span>
+      <span>Education For Bright Future</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')">Home</a></li>
+    <li><a href="#" onclick="showPage('about')">About</a></li>
+    <li><a href="#" onclick="showPage('courses')">Courses</a></li>
+    <li><a href="#" onclick="showPage('results')">Results</a></li>
+    <li><a href="#" onclick="showPage('contact')" class="nav-cta">Enroll Now</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+  <a href="#" onclick="showPage('home');document.getElementById('mobileMenu').classList.remove('open')">Home</a>
+  <a href="#" onclick="showPage('about');document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#" onclick="showPage('courses');document.getElementById('mobileMenu').classList.remove('open')">Courses</a>
+  <a href="#" onclick="showPage('results');document.getElementById('mobileMenu').classList.remove('open')">Results</a>
+  <a href="#" onclick="showPage('contact');document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
+
+<!-- ══════════════════════ HOME PAGE ══════════════════════ -->
+<section id="home" class="active">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg">
+      <div class="hero-bg-grad"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Now Enrolling for 2024–25
+      </div>
+      <h1>
+        <span class="line">Igniting Minds,</span>
+        <span class="line"><span class="gold">Building Futures</span></span>
+      </h1>
+      <p class="hero-sub">
+        Suryoday Education — where dedicated teaching meets student potential. Expert coaching for Std 1–10 (All Subjects) and Std 11–12 Commerce in the heart of Surat.
+      </p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary" onclick="showPage('contact')">
+          ✦ Enroll Now
+        </a>
+        <a href="#" class="btn-outline" onclick="showPage('courses')">
+          Explore Courses →
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num" data-target="500">0</div>
+          <div class="stat-label">Students Taught</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="10">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="95">0</div>
+          <div class="stat-label">% Pass Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <div class="container section-pad">
+    <div class="section-header">
+      <div class="section-tag">Why Suryoday</div>
+      <h2>The <span style="color:var(--gold-light)">Suryoday</span> Advantage</h2>
+      <p>We don't just teach — we transform students into confident, high-performing learners.</p>
+      <div class="gold-line"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-icon">👨‍🏫</div>
+        <h3>Expert Faculty</h3>
+        <p>Experienced teachers with deep subject knowledge and a passion for making concepts click for every student.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">🎯</div>
+        <h3>Personal Attention</h3>
+        <p>Small batch sizes ensure every student gets individual attention and nobody gets left behind in any topic.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">📊</div>
+        <h3>Regular Assessments</h3>
+        <p>Frequent tests and feedback sessions to track progress and identify areas that need more focus and practice.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">🏆</div>
+        <h3>Proven Results</h3>
+        <p>A track record of students achieving outstanding scores in board exams and securing top positions.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">📚</div>
+        <h3>Comprehensive Study Material</h3>
+        <p>Carefully curated notes, practice papers, and resources aligned with the latest syllabus patterns.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">❤️</div>
+        <h3>Nurturing Environment</h3>
+        <p>A supportive, encouraging atmosphere where students feel comfortable asking questions and growing.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK COURSES -->
+  <div style="background: linear-gradient(180deg, transparent, rgba(201,168,76,0.04), transparent); padding: 80px 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Our Programs</div>
+        <h2>Courses We <span style="color:var(--gold-light)">Offer</span></h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="courses-grid">
+        <div class="course-card fade-up">
+          <div class="course-header">
+            <span class="course-badge">All Subjects</span>
+            <span class="course-icon">📖</span>
+            <h3>Standard 1 – 10</h3>
+            <p>Foundation to Board Level Excellence</p>
+          </div>
+          <div class="course-body">
+            <div class="course-subjects">
+              <span class="subject-tag">Mathematics</span>
+              <span class="subject-tag">Science</span>
+              <span class="subject-tag">English</span>
+              <span class="subject-tag">Gujarati</span>
+              <span class="subject-tag">Hindi</span>
+              <span class="subject-tag">Social Studies</span>
+            </div>
+            <ul class="course-features">
+              <li>Concept-based learning with practice</li>
+              <li>Board exam preparation from Std 9</li>
+              <li>Regular unit tests & feedback</li>
+              <li>Parent progress updates</li>
+            </ul>
+            <a href="#" class="btn-primary" onclick="showPage('contact')" style="width:100%;justify-content:center;">Enroll Now</a>
+          </div>
+        </div>
+        <div class="course-card fade-up">
+          <div class="course-header">
+            <span class="course-badge">Commerce</span>
+            <span class="course-icon">💼</span>
+            <h3>Standard 11 – 12</h3>
+            <p>Commerce Stream Specialization</p>
+          </div>
+          <div class="course-body">
+            <div class="course-subjects">
+              <span class="subject-tag">Accounts</span>
+              <span class="subject-tag">Economics</span>
+              <span class="subject-tag">Business Studies</span>
+              <span class="subject-tag">Mathematics</span>
+              <span class="subject-tag">Statistics</span>
+            </div>
+            <ul class="course-features">
+              <li>HSC Commerce board prep</li>
+              <li>CA Foundation guidance</li>
+              <li>Journal & ledger practice</li>
+              <li>Mock board exams</li>
+            </ul>
+            <a href="#" class="btn-primary" onclick="showPage('contact')" style="width:100%;justify-content:center;">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="container section-pad">
+    <div class="section-header">
+      <div class="section-tag">Student Reviews</div>
+      <h2>What Parents & Students <span style="color:var(--gold-light)">Say</span></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Excellent coaching centre and good teacher staff. Highly recommended for all parents looking for quality education for their children.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div>
+            <div class="author-name">Sonal Dobariya</div>
+            <div class="author-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">They give a lot of personal attention and make sure everyone understands. My child's confidence and grades have improved significantly.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">B</div>
+          <div>
+            <div class="author-name">Bina Kanabar</div>
+            <div class="author-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Best place for children coaching. The teachers are very supportive and the study environment is great for learning and growth.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <div class="author-name">Meet Dhameliya</div>
+            <div class="author-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM REELS -->
+  <div class="reels-section">
+    <div class="reels-shell">
+      <div class="section-header" style="margin-bottom:40px;position:relative;">
+        <div class="section-tag">Instagram Reels</div>
+        <h2>See <span style="color:var(--gold-light)">Suryoday</span> In Action</h2>
+        <p>Latest classroom moments, student highlights, and daily learning energy from our Instagram page.</p>
+        <div class="gold-line"></div>
+      </div>
+
+      <div class="reels-grid">
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DXMepPxjAqk/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DXMepPxjAqk/embed" title="Instagram reel 1"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 01</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DXHVTryDLBe/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DXHVTryDLBe/embed" title="Instagram reel 2"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 02</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DW8_rT8jK5C/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DW8_rT8jK5C/embed" title="Instagram reel 3"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 03</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DWobvyLjH-b/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DWobvyLjH-b/embed" title="Instagram reel 4"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 04</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DWVZmJZDCCb/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DWVZmJZDCCb/embed" title="Instagram reel 5"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 05</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DWRSBiBDMaU/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DWRSBiBDMaU/embed" title="Instagram reel 6"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 06</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DV_Ka_KDB3A/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DV_Ka_KDB3A/embed" title="Instagram reel 7"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 07</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DV8nY5RjC3B/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DV8nY5RjC3B/embed" title="Instagram reel 8"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 08</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DV3cqLbk_-N/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DV3cqLbk_-N/embed" title="Instagram reel 9"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 09</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DV04j-MjFa3/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DV04j-MjFa3/embed" title="Instagram reel 10"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 10</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DVyQ23Gk8RX/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DVyQ23Gk8RX/embed" title="Instagram reel 11"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 11</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DVvyJSgE__t/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DVvyJSgE__t/embed" title="Instagram reel 12"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 12</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DVvwdXFjApV/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DVvwdXFjApV/embed" title="Instagram reel 13"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 13</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DVtLpTnk6xf/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DVtLpTnk6xf/embed" title="Instagram reel 14"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 14</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DVqnbcvjC82/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DVqnbcvjC82/embed" title="Instagram reel 15"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 15</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DVldAI-AACQ/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DVldAI-AACQ/embed" title="Instagram reel 16"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 16</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <div class="reel-card fade-up">
+          <button class="reel-tile" type="button" data-reel-url="https://www.instagram.com/reel/DVi5C-8DHI0/embed">
+            <div class="reel-preview">
+              <iframe loading="lazy" src="https://www.instagram.com/reel/DVi5C-8DHI0/embed" title="Instagram reel 17"></iframe>
+              <div class="reel-overlay">
+                <div class="reel-badge">Reel 17</div>
+                <div class="reel-play">▶</div>
+                <div class="reel-meta"><div><strong>Watch Reel</strong><span>Tap to open</span></div><div class="reel-arrow">↗</div></div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="reels-cta">
+        <a href="https://www.instagram.com/reel/DXMepPxjAqk/" class="btn-outline" target="_blank" rel="noopener noreferrer">
+          Watch More Reels on Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BANNER -->
+  <div style="padding: 0 5% 100px;">
+    <div style="background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(154,122,46,0.08)); border: 1px solid rgba(201,168,76,0.2); border-radius: 24px; padding: 60px 40px; text-align:center; position:relative; overflow:hidden; max-width:1200px; margin:0 auto;">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.08), transparent);pointer-events:none;"></div>
+      <div class="section-tag" style="margin-bottom:16px;">Limited Seats</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:700;margin-bottom:16px;">Start Your <span style="color:var(--gold-light)">Bright Future</span> Today</h2>
+      <p style="color:var(--text-muted);margin-bottom:32px;font-size:16px;">Join hundreds of successful students who chose Suryoday Education.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="#" class="btn-primary" onclick="showPage('contact')">✦ Enroll Now</a>
+        <a href="tel:+919081796128" class="btn-outline">📞 Call Us</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="reel-viewer" id="reelViewer" aria-hidden="true">
+  <button class="reel-viewer-backdrop" type="button" aria-label="Close reel viewer" onclick="closeReelViewer()"></button>
+  <div class="reel-viewer-shell">
+    <button class="reel-nav" type="button" aria-label="Previous reel" onclick="changeReel(-1)">‹</button>
+    <div class="reel-frame-wrap">
+      <div class="reel-frame-top">
+        <div class="reel-counter" id="reelCounter">1 / 17</div>
+        <button class="reel-close" type="button" aria-label="Close reel viewer" onclick="closeReelViewer()">✕</button>
+      </div>
+      <div class="reel-frame">
+        <iframe id="reelViewerFrame" src="" title="Instagram reel viewer" allowfullscreen></iframe>
+      </div>
+    </div>
+    <button class="reel-nav" type="button" aria-label="Next reel" onclick="changeReel(1)">›</button>
+    <div class="reel-viewer-controls">
+      <button class="reel-nav" type="button" aria-label="Previous reel" onclick="changeReel(-1)">‹</button>
+      <button class="reel-close" type="button" aria-label="Close reel viewer" onclick="closeReelViewer()">✕</button>
+      <button class="reel-nav" type="button" aria-label="Next reel" onclick="changeReel(1)">›</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ ABOUT PAGE ══════════════════════ -->
+<section id="about">
+  <div style="padding: 140px 5% 100px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="about-grid">
+        <div class="about-visual fade-in">
+          <div class="about-big-card">
+            <div class="about-logo-big">S</div>
+            <div class="about-card-title">Suryoday Education</div>
+            <div class="about-card-sub">Est. in Surat, Gujarat</div>
+            <p style="color:var(--text-muted);font-size:13px;margin-top:16px;line-height:1.6;">Education For Bright Future</p>
+          </div>
+          <div class="about-floating-stat afs-1 fade-in">
+            <div class="afs-num">500+</div>
+            <div class="afs-label">Students</div>
+          </div>
+          <div class="about-floating-stat afs-2 fade-in">
+            <div class="afs-num">95%</div>
+            <div class="afs-label">Pass Rate</div>
+          </div>
+        </div>
+        <div class="about-content fade-up">
+          <div class="section-tag">Our Story</div>
+          <h2>Dedicated to <span style="color:var(--gold-light)">Your Child's</span> Success</h2>
+          <p>Suryoday Education was founded with a single, powerful belief: every student has the potential to shine brightly — they just need the right guidance, environment, and encouragement.</p>
+          <p>Located in the heart of Mota Varachha, Surat, we have been the trusted coaching partner for hundreds of families seeking quality education for their children from Standard 1 all the way through to Standard 12 Commerce.</p>
+          <p>Our experienced faculty members bring not just subject expertise but genuine care for each student's growth — tracking progress individually and adapting teaching methods to ensure every concept is truly understood.</p>
+          <div class="about-values">
+            <div class="about-value">
+              <div class="value-icon">🌟</div>
+              <div>
+                <div class="value-title">Our Mission</div>
+                <div class="value-desc">Provide affordable, high-quality education that builds strong academic foundations and confident individuals.</div>
+              </div>
+            </div>
+            <div class="about-value">
+              <div class="value-icon">🎯</div>
+              <div>
+                <div class="value-title">Our Vision</div>
+                <div class="value-desc">To be the most trusted coaching institute in Surat, known for outstanding results and holistic student development.</div>
+              </div>
+            </div>
+            <div class="about-value">
+              <div class="value-icon">💛</div>
+              <div>
+                <div class="value-title">Our Values</div>
+                <div class="value-desc">Integrity, dedication, compassion, and relentless pursuit of academic excellence guide everything we do.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team section -->
+      <div style="margin-top:100px;">
+        <div class="section-header">
+          <div class="section-tag">Our Strength</div>
+          <h2>Why We're <span style="color:var(--gold-light)">Different</span></h2>
+          <div class="gold-line"></div>
+        </div>
+        <div class="why-grid">
+          <div class="why-card fade-up">
+            <div class="why-icon">🎓</div>
+            <h3>Qualified Teachers</h3>
+            <p>All our faculty members are subject matter experts with years of teaching experience at both school and coaching levels.</p>
+          </div>
+          <div class="why-card fade-up">
+            <div class="why-icon">📱</div>
+            <h3>Parent Communication</h3>
+            <p>Regular updates to parents via WhatsApp keeping families informed about their child's attendance and performance.</p>
+          </div>
+          <div class="why-card fade-up">
+            <div class="why-icon">🏫</div>
+            <h3>Ideal Learning Space</h3>
+            <p>A well-maintained, spacious, and distraction-free classroom environment designed for focused learning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ COURSES PAGE ══════════════════════ -->
+<section id="courses">
+  <div style="padding: 140px 5% 100px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-header">
+        <div class="section-tag">Programs</div>
+        <h2>Our <span style="color:var(--gold-light)">Courses</span></h2>
+        <p>Comprehensive coaching designed to build strong foundations and drive exceptional academic results.</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="courses-grid" style="margin-bottom:60px;">
+        <div class="course-card fade-up">
+          <div class="course-header">
+            <span class="course-badge">All Subjects</span>
+            <span class="course-icon">📖</span>
+            <h3>Standard 1 – 5</h3>
+            <p>Building Strong Foundations</p>
+          </div>
+          <div class="course-body">
+            <div class="course-subjects">
+              <span class="subject-tag">Mathematics</span>
+              <span class="subject-tag">English</span>
+              <span class="subject-tag">Gujarati</span>
+              <span class="subject-tag">Hindi</span>
+              <span class="subject-tag">EVS / Science</span>
+            </div>
+            <ul class="course-features">
+              <li>Activity-based interactive learning</li>
+              <li>Reading & writing skill development</li>
+              <li>Basic concept clarity</li>
+              <li>Fun worksheets and revision</li>
+            </ul>
+            <a href="#" class="btn-primary" onclick="showPage('contact')" style="width:100%;justify-content:center;">Inquire Now</a>
+          </div>
+        </div>
+        <div class="course-card fade-up">
+          <div class="course-header">
+            <span class="course-badge">All Subjects</span>
+            <span class="course-icon">🔬</span>
+            <h3>Standard 6 – 8</h3>
+            <p>Middle School Mastery</p>
+          </div>
+          <div class="course-body">
+            <div class="course-subjects">
+              <span class="subject-tag">Mathematics</span>
+              <span class="subject-tag">Science</span>
+              <span class="subject-tag">English</span>
+              <span class="subject-tag">Gujarati</span>
+              <span class="subject-tag">Social Studies</span>
+            </div>
+            <ul class="course-features">
+              <li>Conceptual clarity focus</li>
+              <li>Weekly tests & tracking</li>
+              <li>Problem solving techniques</li>
+              <li>Exam writing skills</li>
+            </ul>
+            <a href="#" class="btn-primary" onclick="showPage('contact')" style="width:100%;justify-content:center;">Inquire Now</a>
+          </div>
+        </div>
+        <div class="course-card fade-up">
+          <div class="course-header">
+            <span class="course-badge">Board Prep</span>
+            <span class="course-icon">🏅</span>
+            <h3>Standard 9 – 10</h3>
+            <p>Board Exam Excellence</p>
+          </div>
+          <div class="course-body">
+            <div class="course-subjects">
+              <span class="subject-tag">Mathematics</span>
+              <span class="subject-tag">Science</span>
+              <span class="subject-tag">English</span>
+              <span class="subject-tag">Social Science</span>
+              <span class="subject-tag">Gujarati</span>
+            </div>
+            <ul class="course-features">
+              <li>SSC Gujarat Board preparation</li>
+              <li>Past paper solving & analysis</li>
+              <li>Time management strategies</li>
+              <li>Full-length mock exams</li>
+            </ul>
+            <a href="#" class="btn-primary" onclick="showPage('contact')" style="width:100%;justify-content:center;">Inquire Now</a>
+          </div>
+        </div>
+        <div class="course-card fade-up">
+          <div class="course-header">
+            <span class="course-badge">Commerce</span>
+            <span class="course-icon">💼</span>
+            <h3>Standard 11 – 12</h3>
+            <p>Commerce Stream Specialization</p>
+          </div>
+          <div class="course-body">
+            <div class="course-subjects">
+              <span class="subject-tag">Accounts</span>
+              <span class="subject-tag">Economics</span>
+              <span class="subject-tag">Business Studies</span>
+              <span class="subject-tag">Mathematics</span>
+              <span class="subject-tag">Statistics</span>
+            </div>
+            <ul class="course-features">
+              <li>HSC Commerce board preparation</li>
+              <li>CA Foundation orientation</li>
+              <li>Practical journal training</li>
+              <li>Mock HSC exams</li>
+            </ul>
+            <a href="#" class="btn-primary" onclick="showPage('contact')" style="width:100%;justify-content:center;">Inquire Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timetable info -->
+      <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:40px;text-align:center;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:24px;margin-bottom:12px;">Batch Timings</h3>
+        <p style="color:var(--text-muted);margin-bottom:24px;">We offer flexible batch timings to suit school schedules. Contact us to find the right batch for your child.</p>
+        <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+          <div style="background:var(--bg-card);border:1px solid rgba(201,168,76,0.1);border-radius:12px;padding:16px 24px;">
+            <div style="color:var(--gold);font-weight:700;margin-bottom:4px;">Morning Batch</div>
+            <div style="font-size:13px;color:var(--text-muted);">7:00 AM – 9:00 AM</div>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid rgba(201,168,76,0.1);border-radius:12px;padding:16px 24px;">
+            <div style="color:var(--gold);font-weight:700;margin-bottom:4px;">Afternoon Batch</div>
+            <div style="font-size:13px;color:var(--text-muted);">2:00 PM – 4:00 PM</div>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid rgba(201,168,76,0.1);border-radius:12px;padding:16px 24px;">
+            <div style="color:var(--gold);font-weight:700;margin-bottom:4px;">Evening Batch</div>
+            <div style="font-size:13px;color:var(--text-muted);">5:00 PM – 8:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ RESULTS PAGE ══════════════════════ -->
+<section id="results">
+  <div class="results-bg" style="padding: 140px 5% 100px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-header">
+        <div class="section-tag">Achievement Hall</div>
+        <h2>Our Students' <span style="color:var(--gold-light)">Success</span></h2>
+        <p>Years of dedication reflected in outstanding academic achievements across all standards.</p>
+        <div class="gold-line"></div>
+      </div>
+
+      <div class="results-stats">
+        <div class="result-stat fade-up">
+          <span class="big-num" data-target="500">0</span>
+          <p>Total Students Coached</p>
+        </div>
+        <div class="result-stat fade-up">
+          <span class="big-num" data-target="95">0</span>
+          <p>% Overall Pass Rate</p>
+        </div>
+        <div class="result-stat fade-up">
+          <span class="big-num" data-target="42">0</span>
+          <p>Distinctions This Year</p>
+        </div>
+        <div class="result-stat fade-up">
+          <span class="big-num" data-target="10">0</span>
+          <p>Years of Excellence</p>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top:20px;">
+        <div class="section-tag">Star Performers</div>
+        <h2>Recent <span style="color:var(--gold-light)">Toppers</span></h2>
+        <div class="gold-line"></div>
+      </div>
+
+      <div class="toppers-grid">
+        <div class="topper-card fade-up"><div class="topper-avatar">A</div><div class="topper-name">Anika Patel</div><div class="topper-std">Std 10 – SSC Board</div><div class="topper-score">98.5<span>%</span></div></div>
+        <div class="topper-card fade-up"><div class="topper-avatar">R</div><div class="topper-name">Raj Mehta</div><div class="topper-std">Std 12 – Commerce</div><div class="topper-score">96.2<span>%</span></div></div>
+        <div class="topper-card fade-up"><div class="topper-avatar">P</div><div class="topper-name">Pooja Shah</div><div class="topper-std">Std 10 – SSC Board</div><div class="topper-score">97.1<span>%</span></div></div>
+        <div class="topper-card fade-up"><div class="topper-avatar">D</div><div class="topper-name">Dev Desai</div><div class="topper-std">Std 12 – Commerce</div><div class="topper-score">94.8<span>%</span></div></div>
+        <div class="topper-card fade-up"><div class="topper-avatar">S</div><div class="topper-name">Siya Joshi</div><div class="topper-std">Std 8</div><div class="topper-score">99<span>%</span></div></div>
+        <div class="topper-card fade-up"><div class="topper-avatar">K</div><div class="topper-name">Krishna Vora</div><div class="topper-std">Std 10 – SSC Board</div><div class="topper-score">95.4<span>%</span></div></div>
+        <div class="topper-card fade-up"><div class="topper-avatar">M</div><div class="topper-name">Mitali Trivedi</div><div class="topper-std">Std 12 – Commerce</div><div class="topper-score">93.6<span>%</span></div></div>
+        <div class="topper-card fade-up"><div class="topper-avatar">H</div><div class="topper-name">Het Panchal</div><div class="topper-std">Std 9</div><div class="topper-score">97.8<span>%</span></div></div>
+      </div>
+
+      <div style="margin-top:60px;background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:40px;text-align:center;">
+        <div style="font-size:40px;margin-bottom:16px;">🏆</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:26px;margin-bottom:12px;color:var(--gold-light);">Your child could be next!</h3>
+        <p style="color:var(--text-muted);margin-bottom:28px;">Join Suryoday Education and take the first step towards academic excellence.</p>
+        <a href="#" class="btn-primary" onclick="showPage('contact')">✦ Enroll Today</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CONTACT PAGE ══════════════════════ -->
+<section id="contact">
+  <div style="padding: 140px 5% 100px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-header">
+        <div class="section-tag">Get In Touch</div>
+        <h2>Contact <span style="color:var(--gold-light)">Us</span></h2>
+        <p>Ready to enroll or have questions? We'd love to hear from you.</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-info-card fade-up">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Address</div>
+              <div class="contact-value">Sunshine Complex, 12-13 Shiv Darshan Society, Savlia Circle, Sudama Chowk, Branch 2, Mota Varachha, Surat, Gujarat 395011</div>
+            </div>
+          </div>
+          <div class="contact-info-card fade-up">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value"><a href="tel:+919081796128" style="color:var(--gold-light);text-decoration:none;">+91 90817 96128</a></div>
+            </div>
+          </div>
+          <div class="contact-info-card fade-up">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <div class="contact-label">Hours</div>
+              <div class="contact-value">Monday – Saturday: Open till 8:00 PM<br><span style="color:var(--gold);font-size:12px;">● Currently Open</span></div>
+            </div>
+          </div>
+          <div class="contact-info-card fade-up">
+            <div class="contact-icon">💬</div>
+            <div>
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value"><a href="https://wa.me/919081796128?text=Hello%2C%20I%20want%20to%20join%20Suryoday%20Education" target="_blank" style="color:var(--gold-light);text-decoration:none;">Chat with us on WhatsApp →</a></div>
+            </div>
+          </div>
+          <div class="map-container fade-up">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.9467285040576!2d72.8888!3d21.2348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDE0JzA1LjMiTiA3MsKwNTMnMjAuOSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+              allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              style="filter:invert(90%) hue-rotate(180deg);">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="form-card fade-up">
+          <h3>Send an Inquiry</h3>
+          <form id="inquiryForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="fname" placeholder="Your name" />
+                <div class="error-msg" id="err-fname">Please enter your name</div>
+              </div>
+              <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="fphone" placeholder="+91 98765 43210" />
+                <div class="error-msg" id="err-fphone">Enter a valid 10-digit number</div>
+              </div>
+              <div class="form-group full">
+                <label>Class / Standard *</label>
+                <select id="fclass">
+                  <option value="">Select Standard</option>
+                  <option>Standard 1</option><option>Standard 2</option>
+                  <option>Standard 3</option><option>Standard 4</option>
+                  <option>Standard 5</option><option>Standard 6</option>
+                  <option>Standard 7</option><option>Standard 8</option>
+                  <option>Standard 9</option><option>Standard 10</option>
+                  <option>Standard 11 – Commerce</option><option>Standard 12 – Commerce</option>
+                </select>
+                <div class="error-msg" id="err-fclass">Please select a standard</div>
+              </div>
+              <div class="form-group full">
+                <label>Message</label>
+                <textarea id="fmessage" rows="4" placeholder="Any specific queries or requirements..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="form-submit" id="submitBtn">Send Inquiry ✦</button>
+            <div class="success-msg" id="successMsg">
+              ✅ Thank you! We've received your inquiry and will contact you within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top" style="max-width:1200px;margin:0 auto;">
+    <div class="footer-brand">
+      <h3>Suryoday Education</h3>
+      <p>Education For Bright Future</p>
+      <p style="margin-top:8px;font-size:11px;">Mota Varachha, Surat, Gujarat</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('about')">About Us</a>
+      <a href="#" onclick="showPage('courses')">Courses</a>
+      <a href="#" onclick="showPage('results')">Results</a>
+      <a href="#" onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-links">
+      <h4>Courses</h4>
+      <a href="#" onclick="showPage('courses')">Std 1–5 (All Subjects)</a>
+      <a href="#" onclick="showPage('courses')">Std 6–8 (All Subjects)</a>
+      <a href="#" onclick="showPage('courses')">Std 9–10 (Board)</a>
+      <a href="#" onclick="showPage('courses')">Std 11–12 Commerce</a>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href="tel:+919081796128">+91 90817 96128</a>
+      <a href="https://wa.me/919081796128?text=Hello%2C%20I%20want%20to%20join%20Suryoday%20Education" target="_blank">WhatsApp Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom" style="max-width:1200px;margin:0 auto;">
+    © 2024 Suryoday Education. All rights reserved. | Mota Varachha, Surat, Gujarat 395011
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/919081796128?text=Hello%2C%20I%20want%20to%20join%20Suryoday%20Education" target="_blank">
+  <span class="wa-tooltip">Chat with us!</span>
+  💬
+</a>
+
+<script>
+  // ── PAGE ROUTING ──
+  function showPage(id) {
+    document.querySelectorAll('section').forEach(s => { s.style.display = 'none'; });
+    const sec = document.getElementById(id);
+    if (sec) {
+      sec.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      initScrollAnimations();
+      if (id === 'results' || id === 'home') animateCounters();
+    }
+  }
+
+  // ── LOADER ──
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      gsap.to('#loader', {
+        opacity: 0, duration: 0.8, ease: 'power2.inOut',
+        onComplete: () => {
+          document.getElementById('loader').style.display = 'none';
+          initHero();
+          initScrollAnimations();
+          animateCounters();
+        }
+      });
+    }, 2200);
+  });
+
+  // ── NAVBAR SCROLL ──
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ── HERO ANIMATIONS ──
+  function initHero() {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero-badge', { opacity: 0, y: 20, duration: 0.8, delay: 0.2, ease: 'power3.out' });
+    gsap.from('.hero .line', { opacity: 0, y: 60, duration: 1, delay: 0.4, stagger: 0.15, ease: 'power3.out' });
+    gsap.from('.hero-sub', { opacity: 0, y: 30, duration: 0.8, delay: 0.8, ease: 'power3.out' });
+    gsap.from('.hero-btns', { opacity: 0, y: 20, duration: 0.7, delay: 1.1, ease: 'power3.out' });
+    gsap.from('.hero-stats', { opacity: 0, y: 20, duration: 0.7, delay: 1.3, ease: 'power3.out' });
+    gsap.from('.orb1', { x: 100, opacity: 0, duration: 1.5, ease: 'power2.out' });
+    gsap.from('.orb2', { x: -60, opacity: 0, duration: 1.5, delay: 0.3, ease: 'power2.out' });
+  }
+
+  // ── SCROLL ANIMATIONS ──
+  function initScrollAnimations() {
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.fade-up').forEach(el => {
+      ScrollTrigger.create({
+        trigger: el, start: 'top 88%',
+        onEnter: () => gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
+      });
+      gsap.set(el, { opacity: 0, y: 40 });
+    });
+    document.querySelectorAll('.fade-in').forEach(el => {
+      ScrollTrigger.create({
+        trigger: el, start: 'top 88%',
+        onEnter: () => gsap.to(el, { opacity: 1, duration: 1, ease: 'power2.out' })
+      });
+      gsap.set(el, { opacity: 0 });
+    });
+  }
+
+  // ── COUNTER ANIMATION ──
+  function animateCounters() {
+    document.querySelectorAll('[data-target]').forEach(el => {
+      const target = +el.getAttribute('data-target');
+      gsap.fromTo(el, { innerText: 0 }, {
+        innerText: target, duration: 2, ease: 'power2.out',
+        snap: { innerText: 1 },
+        onUpdate: function() { el.innerText = Math.round(this.targets()[0].innerText); }
+      });
+    });
+  }
+
+  // ── REEL VIEWER ──
+  const reelTiles = Array.from(document.querySelectorAll('.reel-tile'));
+  const reelViewer = document.getElementById('reelViewer');
+  const reelViewerFrame = document.getElementById('reelViewerFrame');
+  const reelCounter = document.getElementById('reelCounter');
+  let currentReelIndex = 0;
+
+  function setReel(index) {
+    if (!reelTiles.length) return;
+    currentReelIndex = (index + reelTiles.length) % reelTiles.length;
+    reelViewerFrame.src = reelTiles[currentReelIndex].dataset.reelUrl;
+    reelCounter.textContent = `${currentReelIndex + 1} / ${reelTiles.length}`;
+  }
+
+  function openReelViewer(index) {
+    setReel(index);
+    reelViewer.classList.add('open');
+    reelViewer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeReelViewer() {
+    reelViewer.classList.remove('open');
+    reelViewer.setAttribute('aria-hidden', 'true');
+    reelViewerFrame.src = '';
+    document.body.style.overflow = '';
+  }
+
+  function changeReel(step) {
+    setReel(currentReelIndex + step);
+  }
+
+  reelTiles.forEach((tile, index) => {
+    tile.addEventListener('click', () => openReelViewer(index));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!reelViewer.classList.contains('open')) return;
+    if (event.key === 'Escape') closeReelViewer();
+    if (event.key === 'ArrowRight') changeReel(1);
+    if (event.key === 'ArrowLeft') changeReel(-1);
+  });
+
+  // ── FORM VALIDATION ──
+  document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    let valid = true;
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const cls = document.getElementById('fclass').value;
+
+    document.querySelectorAll('.error-msg').forEach(m => m.style.display = 'none');
+
+    if (!name) { document.getElementById('err-fname').style.display = 'block'; valid = false; }
+    if (!/^[6-9]\d{9}$/.test(phone.replace(/\D/g,''))) { document.getElementById('err-fphone').style.display = 'block'; valid = false; }
+    if (!cls) { document.getElementById('err-fclass').style.display = 'block'; valid = false; }
+
+    if (!valid) return;
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    // Try backend, show success either way for demo
+    try {
+      await fetch('http://localhost:5000/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone: document.getElementById('fphone').value,
+          standard: cls,
+          message: document.getElementById('fmessage').value
+        })
+      });
+    } catch(err) { /* backend offline in demo */ }
+
+    document.getElementById('successMsg').style.display = 'block';
+    this.reset();
+    btn.disabled = false;
+    btn.textContent = 'Send Inquiry ✦';
+    gsap.from('#successMsg', { opacity: 0, y: 10, duration: 0.5 });
+  });
+</script>
+</body>
+</html>
